@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/users/**/*.js": {
+    "api/auth/[...nextauth].js": {
       "maxDuration": 30
     }
   }
