@@ -7,8 +7,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         <span className="blue_gradient">{type} Post</span>
       </h1>
       <p className="desc text-left max-w-md">
-        {type} and share amazing memes with the world, and let your imagination
-        run wild with any AI-powered platform
+        {type} and share amazing memes with the world, and come back to it
+        whenever you need a good laugh.
       </p>
       <form
         onSubmit={handleSubmit}
@@ -16,7 +16,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       >
         <label htmlFor="">
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Your AI meme
+            Your Meme
           </span>
           <textarea
             onChange={(e) => setPost({ ...post, meme: e.target.value })}
@@ -29,7 +29,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         <label htmlFor="">
           <span className="font-satoshi font-semibold text-base text-gray-700">
             Tag {` `}
-            <span>(#product, #webdev)</span>
+            <span>(#streamer, #twitch, #youtube)</span>
           </span>
           <input
             onChange={(e) => setPost({ ...post, tag: e.target.value })}

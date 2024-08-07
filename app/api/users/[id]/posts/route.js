@@ -1,6 +1,7 @@
 import { connectToDB } from "@utils/database";
 import Meme from "@models/meme";
 
+export const dynamic = "force-dynamic";
 export const GET = async (request, { params }) => {
   try {
     await connectToDB();

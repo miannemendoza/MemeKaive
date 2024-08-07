@@ -1,5 +1,7 @@
 import { connectToDB } from "@utils/database";
 import Meme from "@models/meme";
+
+export const dynamic = "force-dynamic";
 export const POST = async (req) => {
   const { userId, meme, tag } = await req.json();
   try {
