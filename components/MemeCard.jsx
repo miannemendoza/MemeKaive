@@ -28,12 +28,13 @@ const MemeCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
 
           <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">
+            <h3 className=" font-semibold text-gray-900">
               {post.creator.username}
             </h3>
+            {/* tbd if it should be shown 
             <p className="font-inter text-sm text-gray-500">
               {post.creator.email}
-            </p>
+            </p> */}
           </div>
         </div>
         <div className="copy_btn" onClick={() => handleCopy()}>
@@ -49,7 +50,7 @@ const MemeCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.meme}</p>
+      <p className="my-4  text-sm text-gray-700">{post.meme}</p>
       <p
         className="font-inter text-sm blue_gradient cursor-pointer"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
