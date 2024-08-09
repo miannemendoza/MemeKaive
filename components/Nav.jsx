@@ -5,10 +5,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { MdModeNight, MdLightMode, MdDarkMode } from "react-icons/md";
+import { BsMoonStarsFill } from "react-icons/bs";
+import { useTheme } from "next-themes";
 const nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
   //for auth
   useEffect(() => {
     const setUpProviders = async () => {
@@ -31,7 +44,24 @@ const nav = () => {
       </Link>
 
       {/* desktop nav */}
-      <div className="sm:flex hidden">
+      <div className="sm:flex hidden items-center ">
+        <div className="flex-none">
+          {/* Toggle button here */}
+          <button className="btn btn-square btn-ghost">
+            {theme === "light" ? (
+              <BsMoonStarsFill
+                className="text-2xl mx-1"
+                onClick={() => setTheme("dark")}
+              />
+            ) : (
+              <MdLightMode
+                className="text-2xl mx-1"
+                onClick={() => setTheme("light")}
+              />
+            )}
+          </button>
+        </div>
+
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <button type="button" onClick={signOut} className="outline_btn">

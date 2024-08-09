@@ -1,4 +1,4 @@
-// File: C:\Users\miche\Projects\MemeKaive\app\api\meme\route.js
+// File: /home/mianne/Documents/Projects/MemeKaive/app/api/meme/route.js
 import * as entry from '../../../../../app/api/meme/route.js'
 import type { NextRequest } from 'next/server.js'
 

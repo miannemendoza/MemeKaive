@@ -1,4 +1,4 @@
-// File: C:\Users\miche\Projects\MemeKaive\app\api\auth\[...nextauth]\route.js
+// File: /home/mianne/Documents/Projects/MemeKaive/app/api/auth/[...nextauth]/route.js
 import * as entry from '../../../../../../app/api/auth/[...nextauth]/route.js'
 import type { NextRequest } from 'next/server.js'
 

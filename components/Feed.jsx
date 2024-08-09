@@ -43,7 +43,7 @@ const Feed = () => {
         {session?.user && (
           <Link
             href="/create-meme"
-            className=" rounded-lg border bg-[#ffc107e7] py-1.5 px-5 text-black transition-all hover:bg-white  text-center text-sm   justify-center"
+            className=" rounded-lg border bg-[#ffc107e7] py-1.5 px-5 dark:text-white text-black transition-all hover:bg-white  text-center text-sm   justify-center"
           >
             Add Meme
           </Link>

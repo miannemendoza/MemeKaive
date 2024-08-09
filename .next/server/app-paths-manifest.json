@@ -1,7 +1,6 @@
 {
   "/page": "app/page.js",
-  "/profile/page": "app/profile/page.js",
-  "/create-meme/page": "app/create-meme/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/api/meme/route": "app/api/meme/route.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }
