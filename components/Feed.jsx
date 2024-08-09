@@ -1,7 +1,11 @@
 "use client";
 import MemeCard from "./MemeCard";
+import Search from "../components/search";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 const Feed = () => {
+  const { data: session } = useSession();
   const [searchText, setSearchText] = useState("");
   const [post, setPost] = useState([]);
   const handleSearchChange = (e) => {};
@@ -34,16 +38,17 @@ const Feed = () => {
   };
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
-        <input
-          type="text"
-          placeholder="Search for a tag or username"
-          value={searchText}
-          onChange={handleSearchChange}
-          required
-          className="search_input peer"
-        />
-      </form>
+      <Search />
+      <div className="mt-3">
+        {session?.user && (
+          <Link
+            href="/create-meme"
+            className=" rounded-lg border bg-[#ffc107e7] py-1.5 px-5 text-black transition-all hover:bg-white  text-center text-sm   justify-center"
+          >
+            Add Meme
+          </Link>
+        )}
+      </div>
 
       <MemeCardList data={post} handleTagClick={() => yadoo()} />
     </section>
