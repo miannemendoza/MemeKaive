@@ -7,20 +7,20 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { MdModeNight, MdLightMode, MdDarkMode } from "react-icons/md";
 import { BsMoonStarsFill } from "react-icons/bs";
-import { useTheme } from "next-themes";
 const nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  // );
 
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   const localTheme = localStorage.getItem("theme");
+  //   document.querySelector("html").setAttribute("data-theme", localTheme);
+  //   console.log("THEME", localTheme);
+  // }, [theme]);
 
   //for auth
   useEffect(() => {
@@ -31,7 +31,7 @@ const nav = () => {
     setUpProviders();
   }, []);
   return (
-    <nav className="flex-between w-full h-20 mb-16 pt-3 bg-[#2196F3] px-7">
+    <nav className="flex-between w-full h-20   pt-3 bg-[#2196F3] px-7">
       <Link href="/" className=" flex gap-2 flex-center">
         <Image
           src="/assets/images/b.png"
@@ -45,13 +45,12 @@ const nav = () => {
 
       {/* desktop nav */}
       <div className="sm:flex hidden items-center ">
-        <div className="flex-none">
-          {/* Toggle button here */}
+        {/* <div className="flex-none">
           <button className="btn btn-square btn-ghost">
             {theme === "light" ? (
               <BsMoonStarsFill
                 className="text-2xl mx-1"
-                onClick={() => setTheme("dark")}
+                onClick={() => setTheme("synthwave")}
               />
             ) : (
               <MdLightMode
@@ -60,7 +59,7 @@ const nav = () => {
               />
             )}
           </button>
-        </div>
+        </div> */}
 
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">

@@ -43,7 +43,7 @@ const MyProfile = () => {
   return (
     <Profile
       name="My"
-      desc="Welcome to your personalized profle page"
+      desc="Welcome to your personalized profle page, check out your added memes here."
       data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}

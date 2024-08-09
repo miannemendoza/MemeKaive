@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Search = () => {
+const Search = ({ handleSearch }) => {
   return (
     <label className="input input-bordered flex items-center w-full gap-2">
-      <input type="text" className="grow" placeholder="Search a tag or meme" />
+      <input
+        type="text"
+        className="grow"
+        placeholder="Search a tag or meme"
+        onChange={(e) => handleSearch(e.target.value)}
+      />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"

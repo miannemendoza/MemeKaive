@@ -1,4 +1,4 @@
-// File: /home/mianne/Documents/Projects/MemeKaive/app/page.jsx
+// File: C:\Users\miche\Projects\MemeKaive\app\page.jsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

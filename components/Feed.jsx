@@ -1,30 +1,50 @@
 "use client";
 import MemeCard from "./MemeCard";
 import Search from "../components/search";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 const Feed = () => {
   const { data: session } = useSession();
-  const [searchText, setSearchText] = useState("");
   const [post, setPost] = useState([]);
-  const handleSearchChange = (e) => {};
+  const searchParams = useSearchParams();
+  const pathName = usePathname();
+  const replace = useRouter();
+  const fetchPosts = async () => {
+    const response = await fetch("/api/meme");
+    console.log(response);
+    const data = await response.json();
+
+    setPost(data);
+  };
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch("/api/meme");
-      const data = await response.json();
-      setPost(data);
-    };
-
     fetchPosts();
   }, []);
+
+  const handleSearchChange = async (value) => {
+    const response = await fetch(`/api/meme?search=${value}`);
+    const data = await response.json();
+    setPost(data);
+
+    const param = new URLSearchParams(searchParams);
+
+    if (value) {
+      param.set("search", value);
+    } else {
+      param.delete("search");
+    }
+
+    replace.replace(`${pathName}?${param}`);
+  };
 
   const MemeCardList = ({ data, handleTagClick }) => {
     return (
       <div className="mt-16 meme_layout">
         {data.map((post) => (
           <MemeCard
+            // @ts-ignore
             key={post._id}
             post={post}
             handleTagClick={handleTagClick}
@@ -38,7 +58,7 @@ const Feed = () => {
   };
   return (
     <section className="feed">
-      <Search />
+      <Search handleSearch={handleSearchChange} />
       <div className="mt-3">
         {session?.user && (
           <Link
