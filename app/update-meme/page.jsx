@@ -40,7 +40,6 @@ const Editmeme = () => {
             tag: post.tag,
           }),
         });
-        console.log(response);
         if (response.ok) {
           router.push("/");
         }

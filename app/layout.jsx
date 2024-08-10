@@ -25,7 +25,6 @@ const RootLayout = ({ children }) => {
         <link rel="icon" href="/images/mk.png" sizes="any" />
         <Provider>
           <Nav />
-          <div className="main"> </div>
           <main className={`antialiased app min-h-screen`}>{children}</main>
           <Footer />
         </Provider>

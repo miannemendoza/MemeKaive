@@ -9,27 +9,17 @@ const MyProfile = () => {
   const [posts, setPosts] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
-  const [sessionId, setSessionId] = useState("");
 
   const fetchPosts = async () => {
-    const response = await fetch(`/api/users/${sessionId}/posts`);
-    const data = await response.json();
-
-    setPosts(data);
+    if (session && session.user) {
+      const response = await fetch(`/api/users/${session.user.id}/posts`);
+      const data = await response.json();
+      setPosts(data);
+    }
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setSessionId(
-        localStorage.getItem("sessionId")
-          ? localStorage.getItem("sessionId")
-          : ""
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    if (sessionId) {
+    if (session && session.user) {
       fetchPosts();
     }
   }, []);

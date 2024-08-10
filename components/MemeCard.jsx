@@ -14,7 +14,6 @@ const MemeCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       setCopied("");
     }, 3000);
   };
-  console.log("post.creator.image", post);
   return (
     <div className="meme_card">
       <div className="flex justify-between items-start gap-5">

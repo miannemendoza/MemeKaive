@@ -12,9 +12,6 @@ const nav = () => {
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("sessionId", session?.user.id);
-  }, [session]);
   //for auth
   useEffect(() => {
     const setUpProviders = async () => {
@@ -93,7 +90,7 @@ const nav = () => {
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
             {toggleDropdown && (
-              <div className="dropdown">
+              <div className="dropdown !z-50">
                 <Link
                   href="/profile"
                   className="dropdown_link"
@@ -104,7 +101,10 @@ const nav = () => {
                 <Link
                   href="/create-meme"
                   className="dropdown_link"
-                  onClick={() => setToggleDropdown(false)}
+                  onClick={() => {
+                    setToggleDropdown(false);
+                    console.log("ara i am clicked");
+                  }}
                 >
                   Create Meme
                 </Link>
