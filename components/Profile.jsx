@@ -1,6 +1,6 @@
 import React from "react";
 import MemeCard from "./MemeCard";
-const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
+const Profile = async ({ name, desc, data, handleEdit, handleDelete }) => {
   return (
     <section className="w-full">
       <h1 className="head_text text-left">
@@ -10,6 +10,7 @@ const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
       <div className="mt-10 meme_layout">
         {data.map((post) => (
           <MemeCard
+            // @ts-ignore
             key={post._id}
             post={post}
             handleEdit={() => handleEdit && handleEdit(post)}

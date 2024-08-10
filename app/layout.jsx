@@ -3,7 +3,6 @@ import Nav from "@components/Nav";
 import Footer from "@components/Footer";
 import Provider from "@components/Provider";
 import { Space_Grotesk } from "next/font/google";
-import { ThemeProvider } from "next-themes";
 const openSans = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
@@ -26,7 +25,7 @@ const RootLayout = ({ children }) => {
         <Provider>
           <Nav />
           <div className="main"> </div>
-          <main className={`antialiased app`}>{children}</main>
+          <main className={`antialiased app min-h-screen`}>{children}</main>
           <Footer />
         </Provider>
       </body>
