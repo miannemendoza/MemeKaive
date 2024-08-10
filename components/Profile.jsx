@@ -2,7 +2,7 @@ import React from "react";
 import MemeCard from "./MemeCard";
 const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
   return (
-    <section className="w-full  flex justify-center flex-col max-w-7xl mx-auto sm:px-16 px-6">
+    <section className="w-full">
       <h1 className="head_text text-left  !mt-16">
         <span className="blue_gradient">{name} Profile</span>
       </h1>
