@@ -12,10 +12,10 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       </p> */}
 
       <p className="desc text-left max-w-md">
-        Here, You can add your memes to share it with everyone. Keep it detailed
-        and properly tagged. Make sure to not include any slurs, offensive
-        language or any hateful speech or else you might get banned and your
-        account will be deleted. Visit FAQ if you have any questions.{" "}
+        Here, You can {type === "Create" ? "add" : "edit"} your meme to share it
+        with everyone. Keep it detailed and properly tagged. Make sure to not
+        include any slurs, offensive language or any hateful speech or else you
+        might get banned and your account will be deleted.
       </p>
       <form
         onSubmit={handleSubmit}
@@ -51,7 +51,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             Cancel
           </Link>
           <button
-            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
+            className="px-5 py-1.5 text-sm !bg-green-500 outline_btn !text-white"
             type="submit"
             disabled={submitting}
           >

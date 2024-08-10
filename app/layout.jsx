@@ -3,6 +3,7 @@ import Nav from "@components/Nav";
 import Footer from "@components/Footer";
 import Provider from "@components/Provider";
 import { Space_Grotesk } from "next/font/google";
+import React from "react";
 const openSans = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",

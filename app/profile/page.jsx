@@ -9,15 +9,23 @@ const MyProfile = () => {
   const [posts, setPosts] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${session?.user.id}/posts`);
-      const data = await response.json();
-      console.log(data);
-      setPosts(data);
-    };
+  const [sessionId, setSessionId] = useState("");
 
-    if (session?.user.id) {
+  const fetchPosts = async () => {
+    const response = await fetch(`/api/users/${sessionId}/posts`);
+    const data = await response.json();
+
+    setPosts(data);
+  };
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSessionId(
+        localStorage.getItem("sessionId")
+          ? localStorage.getItem("sessionId")
+          : ""
+      );
+    }
+    if (sessionId) {
       fetchPosts();
     }
   }, []);
@@ -42,8 +50,8 @@ const MyProfile = () => {
 
   return (
     <Profile
-      name="My"
-      desc="Welcome to your personalized profle page, check out your added memes here."
+      name={session?.user.name + "'s"}
+      desc="Welcome to your own meme wall, check out your own memes here."
       data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}

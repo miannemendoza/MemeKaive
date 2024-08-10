@@ -8,20 +8,13 @@ import { useState, useEffect } from "react";
 import { MdModeNight, MdLightMode, MdDarkMode } from "react-icons/md";
 import { BsMoonStarsFill } from "react-icons/bs";
 const nav = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
-  // const [theme, setTheme] = useState(
-  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  // );
 
-  // useEffect(() => {
-  //   localStorage.setItem("theme", theme);
-  //   const localTheme = localStorage.getItem("theme");
-  //   document.querySelector("html").setAttribute("data-theme", localTheme);
-  //   console.log("THEME", localTheme);
-  // }, [theme]);
-
+  useEffect(() => {
+    localStorage.setItem("sessionId", session?.user.id);
+  }, [session]);
   //for auth
   useEffect(() => {
     const setUpProviders = async () => {
@@ -30,6 +23,7 @@ const nav = () => {
     };
     setUpProviders();
   }, []);
+
   return (
     <nav className="flex-between w-full h-20   pt-3 bg-[#2196F3] px-7">
       <Link href="/" className=" flex gap-2 flex-center">
@@ -45,27 +39,19 @@ const nav = () => {
 
       {/* desktop nav */}
       <div className="sm:flex hidden items-center ">
-        {/* <div className="flex-none">
-          <button className="btn btn-square btn-ghost">
-            {theme === "light" ? (
-              <BsMoonStarsFill
-                className="text-2xl mx-1"
-                onClick={() => setTheme("synthwave")}
-              />
-            ) : (
-              <MdLightMode
-                className="text-2xl mx-1"
-                onClick={() => setTheme("light")}
-              />
-            )}
-          </button>
-        </div> */}
-
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              className="outline_btn"
+              onClick={() => {
+                signOut({ callbackUrl: "/", redirect: true });
+                localStorage.setItem("sessionId", "");
+              }}
+            >
+              {" "}
               Sign Out
             </button>
+
             <Link href="/profile">
               <Image
                 src={session?.user?.image}
@@ -124,11 +110,12 @@ const nav = () => {
                 </Link>
                 <button
                   type="button"
+                  className="outline_btn"
                   onClick={() => {
                     setToggleDropdown(false);
-                    signOut();
+                    signOut({ callbackUrl: "/", redirect: true });
+                    localStorage.setItem("sessionId", "");
                   }}
-                  className="mt-5 w-full black_btn"
                 >
                   {" "}
                   Sign Out

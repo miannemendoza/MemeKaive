@@ -6,10 +6,12 @@ const Footer = () => {
     <footer className="footer footer-center bg-[#263238e1] h-20 mt-16 text-white p-4 left-0 bottom-0  ">
       <aside>
         <div className="flex ">
-          <FaGithub className="text-2xl mx-1" />
+          <a href="https://github.com/miannemendoza">
+            <FaGithub className="text-2xl mx-1" />
+          </a>
+
           <FaXTwitter className="text-2xl mx-1" />
           <FaInstagram className="text-2xl mx-1" />
-          <FaLinkedin className="text-2xl mx-1" />
         </div>
         <p>© MemeKaive {new Date().getFullYear()} </p>
       </aside>
