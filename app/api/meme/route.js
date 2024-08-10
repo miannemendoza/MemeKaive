@@ -19,7 +19,6 @@ export const GET = async (request) => {
     }
 
     const memes = await Meme.find({}).populate("creator");
-    console.log("meme", memes);
     return new Response(JSON.stringify(memes), { status: 200 });
   } catch (error) {
     return new Response("Failed to fetch all memes", { status: 500 });

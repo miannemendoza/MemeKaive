@@ -6,7 +6,7 @@ const Search = ({ handleSearch }) => {
       <input
         type="text"
         className="grow"
-        placeholder="Search a tag or meme"
+        placeholder="Search meme"
         onChange={(e) => handleSearch(e.target.value)}
       />
       <svg
