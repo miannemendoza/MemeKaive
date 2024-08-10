@@ -17,6 +17,7 @@ const MyProfile = () => {
 
     setPosts(data);
   };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setSessionId(
@@ -25,6 +26,9 @@ const MyProfile = () => {
           : ""
       );
     }
+  }, []);
+
+  useEffect(() => {
     if (sessionId) {
       fetchPosts();
     }
