@@ -9,9 +9,7 @@ const MyProfile = () => {
   const [posts, setPosts] = useState([]);
   const { data: session } = useSession();
   const router = useRouter();
-  const [sessionId, setSessionId] = useState(
-    localStorage.getItem("sessionId") ? localStorage.getItem("sessionId") : ""
-  );
+  const [sessionId, setSessionId] = useState("");
 
   const fetchPosts = async () => {
     const response = await fetch(`/api/users/${sessionId}/posts`);
@@ -20,6 +18,13 @@ const MyProfile = () => {
     setPosts(data);
   };
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setSessionId(
+        localStorage.getItem("sessionId")
+          ? localStorage.getItem("sessionId")
+          : ""
+      );
+    }
     if (sessionId) {
       fetchPosts();
     }
